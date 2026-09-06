@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: backend-deployment
   namespace: chatapp
@@ -17,6 +18,8 @@ spec:
         app: backend
 
     spec:
+      serviceAccountName: backend-sa
+
       containers:
         - name: backend-container
           image: 236209348145.dkr.ecr.ap-southeast-1.amazonaws.com/chat-app-backend:6
@@ -74,3 +77,16 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
             failureThreshold: 3
+
+          volumeMounts:
+            - name: secrets-store
+              mountPath: /mnt/secrets-store
+              readOnly: true
+
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: backend-secret-provider
