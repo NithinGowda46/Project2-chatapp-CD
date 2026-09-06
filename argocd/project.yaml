@@ -1,0 +1,74 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: project-2
+  namespace: argocd
+
+spec:
+  description: Production project for Chat Application
+
+  # Allowed Git repositories
+  sourceRepos:
+    - https://github.com/NithinGowda46/Project2-chatapp-CD.git
+
+  # Allowed deployment destinations
+  destinations:
+    - namespace: chatapp
+      server: https://kubernetes.default.svc
+
+  # Cluster-scoped resources allowed
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+
+    - group: "*"
+      kind: "*"
+
+  # Namespace-scoped resources allowed
+  namespaceResourceWhitelist:
+    - group: ""
+      kind: ConfigMap
+
+    - group: ""
+      kind: Secret
+
+    - group: ""
+      kind: Service
+
+    - group: ""
+      kind: ServiceAccount
+
+    - group: apps
+      kind: Deployment
+
+    - group: apps
+      kind: StatefulSet
+
+    - group: apps
+      kind: ReplicaSet
+
+    - group: apps
+      kind: DaemonSet
+
+    - group: networking.k8s.io
+      kind: Ingress
+
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+
+    - group: policy
+      kind: PodDisruptionBudget
+
+    - group: batch
+      kind: Job
+
+    - group: batch
+      kind: CronJob
+
+    - group: "*"
+      kind: "*"
+
+  # Warn about orphaned resources
+  orphanedResources:
+    warn: true
