@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: chatapp-ingress
   namespace: chatapp
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
 
 spec:
   ingressClassName: alb
