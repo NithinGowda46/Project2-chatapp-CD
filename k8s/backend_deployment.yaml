@@ -22,7 +22,7 @@ spec:
 
       containers:
         - name: backend-container
-          image: 236209348145.dkr.ecr.ap-southeast-1.amazonaws.com/chat-app-backend:22
+          image: 236209348145.dkr.ecr.ap-southeast-1.amazonaws.com/chat-app-backend:23
 
           ports:
             - containerPort: 5001
