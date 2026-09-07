@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: 236209348145.dkr.ecr.ap-southeast-1.amazonaws.com/chat-app-frontend:26
+          image: 236209348145.dkr.ecr.ap-southeast-1.amazonaws.com/chat-app-frontend:27
 
           ports:
             - containerPort: 80
