@@ -5,7 +5,7 @@ metadata:
   namespace: chatapp
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-
+security-groups: sg-0f5f53da8d97613c7
 spec:
   ingressClassName: alb
 
